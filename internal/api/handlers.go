@@ -11,6 +11,10 @@ import (
 
 var ErrUserAlreadyExists = errors.New("user already exists")
 
+type responseMessage struct {
+	Message string `json:"message"`
+}
+
 func (a *API) RegisterUser(c echo.Context) error {
 	ctx := c.Request().Context()
 	params := dtos.RegisterUser{}
@@ -18,7 +22,12 @@ func (a *API) RegisterUser(c echo.Context) error {
 	err := c.Bind(&params)
 
 	if err != nil {
-		return c.JSON(http.StatusBadRequest, err)
+		return c.JSON(http.StatusBadRequest, responseMessage{Message: err.Error()})
+	}
+
+	err = a.dataValidator.Struct(params)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, responseMessage{Message: err.Error()})
 	}
 
 	err = a.serv.RegisterUser(ctx, params.Email, params.Name, params.Password)
