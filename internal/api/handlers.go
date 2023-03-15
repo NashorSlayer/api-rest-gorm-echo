@@ -22,7 +22,7 @@ func (a *API) RegisterUser(c echo.Context) error {
 	err := c.Bind(&params)
 
 	if err != nil {
-		return c.JSON(http.StatusBadRequest, responseMessage{Message: err.Error()})
+		return c.JSON(http.StatusBadRequest, responseMessage{Message: "Invalid request"})
 	}
 
 	err = a.dataValidator.Struct(params)

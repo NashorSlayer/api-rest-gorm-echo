@@ -8,13 +8,13 @@ import (
 
 type API struct {
 	serv          service.Service
-	dataValidator validator.Validate
+	dataValidator *validator.Validate
 }
 
 func New(serv service.Service) *API {
 	return &API{
 		serv:          serv,
-		dataValidator: *validator.New(),
+		dataValidator: validator.New(),
 	}
 }
 
