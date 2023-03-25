@@ -8,6 +8,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/rarifbkn/api-rest-gorm-echo/encryption"
 	"github.com/rarifbkn/api-rest-gorm-echo/internal/api/dtos"
+	"github.com/rarifbkn/api-rest-gorm-echo/internal/models"
 	"github.com/rarifbkn/api-rest-gorm-echo/internal/service"
 )
 
@@ -89,7 +90,6 @@ func (a *API) LoginUser(c echo.Context) error {
 
 }
 
-/*
 func (a *API) AddProduct(c echo.Context) error {
 	//	TODO: get auh token from cookie
 	cookie, err := c.Cookie("Authorization")
@@ -132,7 +132,6 @@ func (a *API) AddProduct(c echo.Context) error {
 
 	err = a.serv.AddProduct(ctx, p, email)
 	if err != nil {
-
 		log.Println(err)
 		if err == service.ErrInvalidPermissions {
 			return c.JSON(http.StatusForbidden, responseMessage{Message: "Invalid Permissions"})
@@ -143,5 +142,3 @@ func (a *API) AddProduct(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, nil)
 }
-
-*/

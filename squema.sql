@@ -41,3 +41,7 @@ insert into ROLES (name) values
 ('admin'),
 ('seller'),
 ('customer')
+
+
+insert into USER_ROLES(user_id,role_id) values 
+(7,1);

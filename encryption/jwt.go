@@ -14,7 +14,6 @@ func SignedLoginToken(u *models.User) (string, error) {
 	return token.SignedString([]byte(key))
 }
 
-/*
 func ParseLoginJWT(value string) (jwt.MapClaims, error) {
 	token, err := jwt.Parse(value, func(t *jwt.Token) (interface{}, error) {
 		return []byte(key), nil
@@ -25,5 +24,3 @@ func ParseLoginJWT(value string) (jwt.MapClaims, error) {
 
 	return token.Claims.(jwt.MapClaims), nil
 }
-
-*/
